@@ -987,12 +987,12 @@ defmodule Chroma.Collection do
   """
   @spec count(Chroma.Collection.t()) :: any()
 
-  def count(%Chroma.Collection{tenant: tenant, database: database, name: name})
+  def count(%Chroma.Collection{tenant: tenant, database: database, id: id})
       when is_binary(tenant) and tenant != "" and
              is_binary(database) and database != "" and
-             is_binary(name) and name != "" do
+             is_binary(id) and id != "" do
     url =
-      "#{Chroma.api_url()}/tenants/#{tenant}/databases/#{database}/collections/#{name}/count"
+      "#{Chroma.api_url()}/tenants/#{tenant}/databases/#{database}/collections/#{id}/count"
 
     url
     |> Req.get()
